@@ -14,12 +14,12 @@
                 var elemento = $('#pages');
                 var total = $('.page').size();
                 var rolar = true;
-                console.log(total);
+
                 setInterval(function(){update()}, 1500);
                 function update(){
                     if(rolar == true){
                         if(pageAtual == (total - 1)){
-                            elemento.stop(true,true).animate({'margin-top': 0}, 200);
+                            elemento.stop(true,true).animate({'margin-top': 0}, 500);
                             topAtual = 0;
                             pageAtual = 0;
                         }
@@ -36,7 +36,6 @@
                 }).mouseleave(function(){
                     rolar = true;
                 }).mousewheel(function(event, delta){
-                    // (delta == 1) ? subir : descer
                     if(delta == 1){
                         if(pageAtual != 0){
                             altura = parseInt($('.page:eq('+(pageAtual-1)+')').css('height'));

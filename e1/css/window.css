@@ -1,6 +1,7 @@
 #window{
 	width: 400px;
 	height: 200px;
+    height: 780px;
 	padding: 10px;
 	background: rgba(60,232,172,1);
 	overflow: hidden;
