@@ -3,15 +3,17 @@
 	height: 200px;
     height: 780px;
 	padding: 10px;
-	background: rgba(60,232,172,1);
+	/*background: rgba(60,232,172,1);*/
+    border: 1px solid #ccc;
 	overflow: hidden;
 }
-.page{
-	width: 400px;
+.luque{
+    background: #f2f2f2;
 	-webkit-box-shadow: 0px 0px 10px white;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
+    padding: 10px;
 }
-#page{
+#luques{
     position: absolute;
     top: 0px;
     left: 0px;
