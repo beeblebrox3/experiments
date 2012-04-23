@@ -12,9 +12,6 @@
  */
 
 (function($){
-    $.fn.LuqueMessage = function(){
-        console.log(this);
-    }
     $.LuqueMessage = function(options){
         var default_options = {
             title: 'título',
@@ -22,16 +19,20 @@
             actions: null,
             width: null,
             containerHeight: null,
-            onClose: null
+            onClose: null,
+            $message: null
         };
 
         var options = $.fn.extend(default_options, options);
         
         _init();
 
-        return this.each(function(){
-            
-        });
+        return {
+            self: this,
+            bento: $.proxy(function(){
+                _close(options.$message);
+            })
+        }
 
         function _init(){
             var $message = $('#LuqueMessage');
@@ -83,6 +84,7 @@
                 $message.append($('<div id="LuqueActions"></div>'));
                 $message.css('opacity', 0);
             $('body').append($message);
+            options.$message = $message;
         }
 
         function _clean($message){
@@ -132,7 +134,7 @@
         }
     }
 
-    $.LuqueMessage.close = function(){
+    /*$.LuqueMessage.close = function(){
         $.event.trigger('_close');
-    }
+    }*/
 })(jQuery);

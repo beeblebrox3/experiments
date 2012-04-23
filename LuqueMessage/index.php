@@ -47,7 +47,7 @@
                 console.log(abc);
             });
             $('#ok').live('click', function(){
-                $.LuqueMessage.close();
+                abc.bento();
             })
         });
     </script>
