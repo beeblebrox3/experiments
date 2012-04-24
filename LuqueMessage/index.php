@@ -46,15 +46,19 @@
                     message: 'mensagem <strong>bold</strong> normal :)',
                     actions: [
                         {
-                            'id': 'ok',
-                            'text': 'ok'
+                            'id': 'edit',
+                            'text': 'click to edit'
                         }
                     ],
                     speed: 300
                 });
             });
-            $('#ok').live('click', function(){
-                abc.close();
+            $('#edit').live('click', function(){
+                abc.update({
+                    'title': 'Modified',
+                    'message': 'oh, yeah!<br />thats very nice, bro!',
+                    'actions': [{'class': 'LuqueClose', 'text': 'close'}]
+                });
             });
         });
     </script>

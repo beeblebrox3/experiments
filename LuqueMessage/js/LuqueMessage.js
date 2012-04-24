@@ -33,7 +33,8 @@
             close: $.proxy(function(){
                 close();
             }),
-            update: $.proxy(function(){
+            update: $.proxy(function(newOptions){
+                options = $.fn.extend(options, newOptions);
                 update();
             })
         }
@@ -43,45 +44,17 @@
                 create();
             }
 
-            //create te action buttons
-            if(typeof(options.actions) == 'object'){
-                var tempObj = null;
-                var $tempObj = null;
-                var actions = [];
-                for(key in options.actions){
-                    tempObj = options.actions[key];
-                    $tempObj = null;
-                    if((tempObj.hasOwnProperty('id') ||
-                        tempObj.hasOwnProperty('class')) &&
-                        tempObj.hasOwnProperty('id')){
-
-                        $tempObj = $('<button />');
-                        if(tempObj.hasOwnProperty('id')){
-                            $tempObj.attr('id', tempObj.id.toString());
-                        }
-                        if(tempObj.hasOwnProperty('class')){
-                            $tempObj.addClass(tempObj.class.toString());
-                        }
-
-                        $tempObj.text(tempObj.text.toString());
-
-                        actions.push($tempObj);
-                    }
-                }
-            }
-            options.actions = actions;
-
             update();
             show();
 
-            $('#LuqueMask, #LuqueClose').click(function(){
+            $('#LuqueMask, .LuqueClose').live('click', function(){
                 close();
             });
         }
 
         function create(){
             options.$message = $('<div id="LuqueMessage"></div>')
-                .append($('<div id="LuqueClose">x</div>'))
+                .append($('<div id="LuqueClose" class="LuqueClose">x</div>'))
                 .append($('<div id="LuqueTitle"></div>'))
                 .append($('<div id="LuqueContainer"></div>'))
                 .append($('<div id="LuqueActions"></div>'))
@@ -108,7 +81,38 @@
         function update(){
             options.$message.find('#LuqueTitle').html(options.title.toString()).end()
                             .find('#LuqueContainer').html(options.message.toString()).end();
-            
+
+
+            //create te action buttons
+            if(typeof(options.actions) == 'object'){
+                options.$message.find('#LuqueActions').html('');
+
+                var tempObj = null;
+                var $tempObj = null;
+                var actions = [];
+                for(key in options.actions){
+                    tempObj = options.actions[key];
+                    $tempObj = null;
+                    if((tempObj.hasOwnProperty('id') ||
+                        tempObj.hasOwnProperty('class')) &&
+                        tempObj.hasOwnProperty('text')){
+
+                        $tempObj = $('<button />');
+                        if(tempObj.hasOwnProperty('id')){
+                            $tempObj.attr('id', tempObj.id.toString());
+                        }
+                        if(tempObj.hasOwnProperty('class')){
+                            $tempObj.addClass(tempObj.class.toString());
+                        }
+
+                        $tempObj.text(tempObj.text.toString());
+
+                        actions.push($tempObj);
+                    }
+                }
+            }
+            options.actions = actions;
+
             for(key in options.actions){
                 options.$message.find('#LuqueActions').append($(options.actions[key]));
             }
