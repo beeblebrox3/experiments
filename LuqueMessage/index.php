@@ -18,6 +18,16 @@
                 margin: auto;
                 min-height: 500px;
             }
+            a{
+                display: inline-block;
+                padding: 7px 15px;
+                background: #191919;
+                font-weight: bold;
+                font-size: 22px;
+                position: relative;
+                margin: auto;
+                color: white;
+            }
         </style>
     </head>
     <body>
@@ -33,22 +43,19 @@
             $('a').click(function(){
                 abc = $.LuqueMessage({
                     title: 'título',
-                    message: 'mensagem',
+                    message: 'mensagem <strong>bold</strong> normal :)',
                     actions: [
                         {
                             'id': 'ok',
                             'text': 'ok'
                         }
                     ],
-                    width: null,
-                    containerHeight: null
+                    speed: 300
                 });
-                
-                console.log(abc);
             });
             $('#ok').live('click', function(){
-                abc.bento();
-            })
+                abc.close();
+            });
         });
     </script>
 </html>

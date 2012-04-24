@@ -14,33 +14,36 @@
 (function($){
     $.LuqueMessage = function(options){
         var default_options = {
-            title: 'título',
-            message: 'mensagem',
-            actions: null,
-            width: null,
-            containerHeight: null,
-            onClose: null,
-            $message: null
+            title:           'LuqueMessage <no title>',
+            message:         'LuqueMessage <no message>',
+            actions:         null,
+            width:           400,
+            containerHeight: 35,
+            onClose:         null,
+            $message:        null,
+            speed:           200,
         };
 
         var options = $.fn.extend(default_options, options);
         
-        _init();
+        init();
 
         return {
             self: this,
-            bento: $.proxy(function(){
-                _close(options.$message);
+            close: $.proxy(function(){
+                close();
+            }),
+            update: $.proxy(function(){
+                update();
             })
         }
 
-        function _init(){
-            var $message = $('#LuqueMessage');
-            if($message.size() == 0){
-                _create();
-                $message = $('#LuqueMessage');
+        function init(){
+            if(options.$message == null){
+                create();
             }
 
+            //create te action buttons
             if(typeof(options.actions) == 'object'){
                 var tempObj = null;
                 var $tempObj = null;
@@ -67,64 +70,78 @@
                 }
             }
             options.actions = actions;
-            //options.actions = null;
-            _update($message);
-            _show($message);
+
+            update();
+            show();
 
             $('#LuqueMask, #LuqueClose').click(function(){
-                _close($message);
+                close();
             });
         }
 
-        function _create(){
-            var $message = $('<div id="LuqueMessage"></div>');
-                $message.append($('<div id="LuqueClose">x</div>'));
-                $message.append($('<div id="LuqueTitle"></div>'));
-                $message.append($('<div id="LuqueContainer"></div>'));
-                $message.append($('<div id="LuqueActions"></div>'));
-                $message.css('opacity', 0);
-            $('body').append($message);
-            options.$message = $message;
+        function create(){
+            options.$message = $('<div id="LuqueMessage"></div>')
+                .append($('<div id="LuqueClose">x</div>'))
+                .append($('<div id="LuqueTitle"></div>'))
+                .append($('<div id="LuqueContainer"></div>'))
+                .append($('<div id="LuqueActions"></div>'))
+                .css({opacity: 0, top: -9999});
+
+            $('body').append(options.$message);
         }
 
-        function _clean($message){
-
-        }
-
-        function _show($message){
-            if($message.css('opacity') == 0){
+        function show(){
+            if(parseInt(options.$message.css('top')) < 0){
                 $('body').append($('<div id="LuqueMask"></div>'));
-                var metrics = _calc($message);
-                $message.css({
+                var metrics = getMetrics();
+                options.$message.css({
                     'top': metrics.top,
-                    'opacity': 1,
-                    'left': metrics.newLeft
+                    'left': metrics.newLeft,
+                    'opacity': 0.4
                 }).stop().animate({
-                    top: metrics.newTop
-                }, 500, 'easeInQuint');
+                    top: metrics.newTop,
+                    opacity: 1
+                }, options.speed, 'easeInQuint');
             }
         }
 
-        function _update($message){
-            $message.find('#LuqueTitle').html(options.title).end()
-                    .find('#LuqueContainer').html(options.message).end();
+        function update(){
+            options.$message.find('#LuqueTitle').html(options.title.toString()).end()
+                            .find('#LuqueContainer').html(options.message.toString()).end();
+            
             for(key in options.actions){
-                $message.find('#LuqueActions').append($(options.actions[key]));
+                options.$message.find('#LuqueActions').append($(options.actions[key]));
+            }
+
+            if(options.width != null){
+                options.$message.css('width', options.width.toString());
+            }
+
+            if(options.containerHeight != null){
+                options.$message.find('#LuqueContainer').css('height', options.containerHeight);
             }
         }
 
-        function _close($message){
+        function close(){
             if(typeof(options.onClose) == 'function'){
                 options.onClose.call();
             }
-            $message.remove();
-            $('#LuqueMask').remove();
+            var metrics = getMetrics();
+            options.$message.animate({
+                top: metrics.top,
+                opacity: 0
+            }, options.speed, 'easeInQuint', function(){
+                $("#LuqueMask").fadeOut(100, 'easeInQuint', function(){
+                    $('#LuqueMask').remove();
+                    options.$message.remove();
+                });
+            });
         }
 
-        function _calc($message){
-            var height = $message.outerHeight();
+        function getMetrics(){
+            var height = options.$message.outerHeight();
             var windowHeight = $(window).innerHeight();
-            var width = $message.outerWidth();
+            var width = options.$message.outerWidth();
             var windowWidth = $(window).innerWidth();
             return {
                 top: 0 - height - 20,
@@ -133,8 +150,4 @@
             }
         }
     }
-
-    /*$.LuqueMessage.close = function(){
-        $.event.trigger('_close');
-    }*/
 })(jQuery);
