@@ -1,0 +1,150 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Arial", sans-serif;
+    color: #ddd;
+    overflow-x: hidden;
+}
+#content{
+    background: #141414;
+    min-height: 400px;
+}
+.container{
+    max-width: 940px;
+    padding: 20px;
+    position: relative;
+    margin: 0 auto;
+    display: block;
+}
+
+h1{
+    background: url('brand.png') no-repeat transparent;
+    display: block;
+    text-indent: -9999px;
+    overflow: hidden;
+    width: 301px;
+    height: 36px;
+}
+p{
+    font-size: 17px;
+    line-height: 120%;
+    margin: 20px 0;
+}
+a{
+    color: white;
+}
+ul{
+    display: block;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.5);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    width: 500px;
+    position: relative;
+    margin: 150px auto;
+    padding: 20px;
+    list-style: none;
+}
+ul a{
+    background: url('tick.png') no-repeat center left;
+    display: block;
+    padding: 15px;
+    margin: 5px 0;
+    text-indent: 10px;
+    -webkit-transition: all linear 0.2s;
+    -moz-transition: all linear 0.2s;
+    -o-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+    font-weight: bold;
+    text-decoration: none;
+}
+ul a:hover{
+    background-color: #fff;
+    color: black;
+}
+#facebook, #twitter, #email{
+    text-indent: -9999px;
+    overflow: hidden;
+    display: inline-block;
+    width: 69px;
+    height: 69px;
+}
+#facebook{ background: url('facebook.png') no-repeat; }
+#twitter{ background: url('twitter.png') no-repeat; }
+#email{ background: url('email.png') no-repeat; }
+footer div{
+    position: relative;
+    margin: auto;
+    width: 297px;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    line-height: 500%;
+}
+@media all and (max-width: 959px){
+    ul, .container{
+        width: 80%;
+    }
+}
+@media all and (max-width: 500px){
+    ul{
+        margin: 15px auto;
+    }
+}
+@media all and (max-width: 297px){
+    footer div{
+        width: 100%;
+    }
+    footer img{
+        display: block;
+        clear: both;
+    }
+}
