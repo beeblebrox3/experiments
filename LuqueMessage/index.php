@@ -18,7 +18,7 @@
                 margin: auto;
                 min-height: 500px;
             }
-            a{
+            span{
                 display: inline-block;
                 padding: 7px 15px;
                 background: #191919;
@@ -27,12 +27,14 @@
                 position: relative;
                 margin: auto;
                 color: white;
+                text-decoration: underline;
+                cursor: pointer;
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <a href="#">click me</a>
+            <span id="clickme">click me</span>
         </div>
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -50,7 +52,7 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
         $(function(){
-            $('a').click(function(){
+            $('span').click(function(){
                 abc = $.LuqueMessage({
                     title: 'título',
                     message: 'mensagem <strong>bold</strong> normal :)',
@@ -65,7 +67,7 @@
             });
             $('#edit').live('click', function(){
                 abc.update({
-                    'title': 'Modified',
+                    'title': 'Modified sad sadas dasd asd as asd asd sadas dad asd asd asd',
                     'message': 'oh, yeah!<br />thats very nice, bro!',
                     'actions': [{'class': 'LuqueClose', 'text': 'close'}]
                 });
