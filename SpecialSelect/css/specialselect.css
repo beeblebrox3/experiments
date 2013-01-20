@@ -52,7 +52,7 @@ body {
 
 /* ================================================== */
 body {
-    background: #222;
+    /*background: #222;*/
 }
 .container {
     width: 940px;
@@ -69,17 +69,22 @@ body {
 /* ================================================== */
 .SpecialSelect-container {
     position: relative;
+    width: 400px;
     height: 30px;
     line-height: 30px;
+    border: 1px solid #aaa;
 }
     .SpecialSelect-selected {
         font-weight: bold;
         padding: 0 10px;
         cursor: pointer;
+        background: url('../img/tipsy-south.gif') no-repeat 10px 13px transparent;
+        text-indent: 20px;
     }
 
     .SpecialSelect-actions {
         display: none;
+        width: 100%;
         position: absolute;
         background: white;
     }
@@ -88,8 +93,7 @@ body {
         display: block;
         top: 30px;
         left: 0;
-        border: 1px solid #ccc;
-        border-top: none;
+        outline: 1px solid #aaa;
     }
     .SpecialSelect-item {
         padding: 0 10px;
@@ -104,9 +108,9 @@ body {
     }
 
     .SpecialSelect-search-container {
-        width: 400px;
         padding: 0 10px 10px 10px;
-        border-bottom: 1px solid #ccc
+        /*border-bottom: 1px solid #eee;*/
+        background: #f2f2f2;
     }
     .SpecialSelect-search-input {
         clear: both;
