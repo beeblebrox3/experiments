@@ -1,0 +1,116 @@
+/* RESET FROM getskeleton.com
+================================================== */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block; }
+body {
+    line-height: 1; }
+ol, ul {
+    list-style: none; }
+blockquote, q {
+    quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none; }
+table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+
+
+/* #Basic Styles
+================================================== */
+body {
+    font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+    -webkit-text-size-adjust: 100%;
+    font-size: 14px;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track-piece{
+    background: white;
+}
+::-webkit-scrollbar-thumb{
+    background: #ccc;
+    border: 1px solid #aaa;
+    -webkit-border-radius: 1px;
+}
+::-webkit-scrollbar-thumb:hover{
+    border: 1px solid rgba(172, 192, 3, 1);
+    background: rgba(225, 229, 197, 1);
+}
+
+
+/* ================================================== */
+body {
+    background: #222;
+}
+.container {
+    width: 940px;
+    padding: 10px;
+    position: relative;
+    margin: auto;
+    background: white;
+    min-height: 400px;
+}
+
+
+
+/* PLUGIN Styles */
+/* ================================================== */
+.SpecialSelect-container {
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+}
+    .SpecialSelect-selected {
+        font-weight: bold;
+        padding: 0 10px;
+        cursor: pointer;
+    }
+
+    .SpecialSelect-actions {
+        display: none;
+        position: absolute;
+        background: white;
+    }
+
+    .SpecialSelect-actions.opened {
+        display: block;
+        top: 30px;
+        left: 0;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+    .SpecialSelect-item {
+        padding: 0 10px;
+        cursor: default;
+    }
+        .SpecialSelect-item:hover,.SpecialSelect-item.hover {
+            background: #eee;
+        }
+    .SpecialSelect-list {
+        max-height: 400px;
+        overflow: auto;
+    }
+
+    .SpecialSelect-search-container {
+        width: 400px;
+        padding: 0 10px 10px 10px;
+        border-bottom: 1px solid #ccc
+    }
+    .SpecialSelect-search-input {
+        clear: both;
+        display: block;
+        width: 80%;
+        padding: 3px;
+    }
