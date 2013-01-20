@@ -27,6 +27,7 @@
                 <ul>
                     <li><a href="LuqueMessage" rel="LuqueMessage">LuqueMessage</a></li>
                     <li><a href="LuqueScrollingList" rel="LuqueScrollingList">LuqueScrollingList</a></li>
+                    <li><a href="SpecialSelect" rel="SpecialSelect">SpecialSelect</a></li>
                 </ul>
             </div>
         </div>

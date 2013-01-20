@@ -197,7 +197,9 @@
             });
 
             $('.SpecialSelect-item').mouseleave(function() {
-                $('.hover').removeClass('hover');
+                $(this).removeClass('hover');
+            }).mouseenter(function() {
+                $(this).addClass('hover');
             });
         });
     </script>
